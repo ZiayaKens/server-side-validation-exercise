@@ -25,7 +25,10 @@ $('#submit').click(function (event){
       window.location.href = '/';
     })
     .fail((err) => {
-      console.log(err);
+      var responseText = JSON.parse(err.responseText)
+      for(let i=0; i<responseText.errors.length;i++){
+        console.log(responseText.errors[i].messages);
+      }
     });
   });
 
